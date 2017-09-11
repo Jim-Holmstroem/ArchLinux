@@ -8,4 +8,18 @@ sda
   └─Volume        LVM2_member          012345-6789-AbCd-EfGh-IjKl-MnOp-QrStUv
     ├─Volume-swap swap                 01234567-89ab-cdef-0123-456789abcde1   [SWAP]
     └─Volume-root ext4                 01234567-89ab-cdef-0123-456789abcde2   /
+
+jim@jim-ws> df -h                                                                                                                                                                            
+Filesystem               Size  Used Avail Use% Mounted on
+dev                      7.8G     0  7.8G   0% /dev
+run                      7.8G  964K  7.8G   1% /run
+/dev/mapper/Volume-root  213G   34G  169G  17% /
+tmpfs                    7.8G  272K  7.8G   1% /dev/shm
+tmpfs                    7.8G     0  7.8G   0% /sys/fs/cgroup
+tmpfs                    7.8G  2.0M  7.8G   1% /tmp
+/dev/sda1                511M   61M  451M  12% /boot
+tmpfs                    1.6G   16K  1.6G   1% /run/user/1000
+
+jim@jim-ws> cat /proc/swaps                                                                                                                                                                  Filename                                Type            Size    Used    Priority
+/dev/dm-1                               partition       16777212        0       -1
 ```
