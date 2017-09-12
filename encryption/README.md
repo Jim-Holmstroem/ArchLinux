@@ -1,4 +1,18 @@
+# Encryption
+"The straight-forward method is to set up LVM on top of the encrypted partition instead of the other way round."
+Have LVM on LUKS
+[Encrypting an entire system](https://wiki.archlinux.org/index.php/Dm-crypt/Encrypting_an_entire_system#LVM_on_LUKS)
 
+* Name `cryptolvm` to `Volume` instead, make it more consistent.
+* Ignore creating `/home` partition and have everything except swap and `/boot` under `/`.
+
+
+```
+GRUB_CMDLINE="cryptdevice=UUID=<UUID-of-Volume>:Volume root=/dev/mapper/Volume-root"
+```
+
+
+Resulting partition and stuff similar to this:
 ```
 jim@jim-ws> lsblk -f                                                                                                                                                                         
 NAME              FSTYPE      LABEL    UUID                                   MOUNTPOINT
