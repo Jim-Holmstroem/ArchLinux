@@ -8,8 +8,9 @@ Have LVM on LUKS
 
 
 ```
-GRUB_CMDLINE="cryptdevice=UUID=<UUID-of-Volume>:Volume root=/dev/mapper/Volume-root"
+GRUB_CMDLINE="cryptdevice=UUID=<UUID-of-crypto_LUKS>:Volume root=/dev/mapper/Volume-root"
 ```
+Note. the UUID must be the one for the `crypto_LUKS` device and *not* the `Volume` device (The `Volume` device is not decrypted yet, so the entrypoint must be the `crypto_LUKS` device)
 
 
 Resulting partition and stuff similar to this:
