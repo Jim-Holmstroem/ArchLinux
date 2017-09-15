@@ -51,7 +51,11 @@ keyBindings conf@(XConfig {XMonad.modMask = modMask}) = Map.fromList $
         | (k, screen) <- zip [xK_x, xK_z] [0..]
         , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]
     ]
-
+    ++
+    [
+      ((modMask .|. shiftMask, k        ), spawn $ "xrandr | grep connected | grep -v disconnected | awk '{print $1}' | sort | head -n " ++ show display ++ " | tail -n 1 | xargs -I{} xrandr --output {} --primary --auto")
+        | (k, display) <- zip [xK_y, xK_u, xK_i, xK_o, xK_p] [1..]
+    ]
 
 mouseBindings' (XConfig {XMonad.modMask = modMask}) = Map.fromList $
     [ ((modMask              , button1), (\w -> focus w >> mouseMoveWindow w
@@ -60,7 +64,6 @@ mouseBindings' (XConfig {XMonad.modMask = modMask}) = Map.fromList $
     , ((modMask              , button3), (\w -> focus w >> mouseResizeWindow w
                                                         >> windows W.shiftMaster))
     ]
-
 
 main = xmonad baseConfig
     { terminal = "st"
