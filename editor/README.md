@@ -1,7 +1,12 @@
 # Install pathogen.vim
+[github/pathogen](https://github.com/tpope/vim-pathogen)
+
 ```bash
 mkdir -p ~/.vim/{autoload,bundle} && \
 curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+
+# or add it manually
+echo "execute pathogen#infect()" >> ~/.vimrc
 ```
 
 # Install plugins
