@@ -10,6 +10,11 @@ wifi-menu
 systemctl start dhcpcd@en1
 ```
 
+# Install polkit
+```
+pacman -S polkit
+```
+
 # Update system clock
 ```bash
 timedatectl set-ntp true
