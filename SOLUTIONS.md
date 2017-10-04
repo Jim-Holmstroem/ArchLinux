@@ -32,3 +32,4 @@ Reinstalling java
 ```
 sudo pacman -S j{re,dk}8-openjdk
 ```
+Try force if that fails to fix it.
