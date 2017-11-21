@@ -1,3 +1,10 @@
+# Install gvim package
+`gvim` has the `+clipboard` feature enabled on `vim`
+
+```bash
+sudo pacman -S gvim
+```
+
 # Install pathogen.vim
 [github/pathogen](https://github.com/tpope/vim-pathogen)
 
