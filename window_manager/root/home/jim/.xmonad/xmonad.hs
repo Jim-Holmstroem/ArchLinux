@@ -14,7 +14,8 @@ baseConfig = desktopConfig
 keyBindings conf@(XConfig {XMonad.modMask = modMask}) = Map.fromList $
     [ ((modMask              , xK_w     ), spawn "firefox")
     , ((modMask              , xK_g     ), spawn $ XMonad.terminal conf)
-    , ((modMask .|. shiftMask, xK_f     ), spawn "xrandr --output HDMI3 --primary --right-of eDP1 --output eDP1 --auto")
+    , ((modMask              , xK_f     ), spawn "xrandr --output eDP1 --primary --auto --output DP1 --off --output HDMI3 --off")
+    , ((modMask .|. shiftMask, xK_f     ), spawn "xrandr --output eDP1 --off --output DP1 --primary --auto --left-of HDMI3 --output HDMI3 --auto")
 
     , ((modMask .|. shiftMask, xK_c     ), kill)
 
@@ -42,6 +43,9 @@ keyBindings conf@(XConfig {XMonad.modMask = modMask}) = Map.fromList $
     , ((modMask              , xK_q     ), spawn "xmonad --recompile; xmonad --restart")
     ]
     ++
+    [ ((modMask, language_key), spawn $ "setxkbmap -layout " ++ language) | (language_key, language) <- [( xK_o, "us"), ( xK_p, "sv")]
+    ]
+    ++
     [ ((modMask .|. m        , k        ), windows $ f i)
         | (i, k) <- zip (XMonad.workspaces conf) [xK_1 .. xK_9]
         , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]
@@ -66,7 +70,7 @@ mouseBindings' (XConfig {XMonad.modMask = modMask}) = Map.fromList $
     ]
 
 main = xmonad baseConfig
-    { terminal = "st"
+    { terminal = "st -f \"Hack:size=16\""
     , modMask = mod4Mask
     , keys = keyBindings
     , mouseBindings = mouseBindings'
