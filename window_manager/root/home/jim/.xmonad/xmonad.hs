@@ -70,7 +70,7 @@ mouseBindings' (XConfig {XMonad.modMask = modMask}) = Map.fromList $
     ]
 
 main = xmonad baseConfig
-    { terminal = "st -f \"Hack:size=16\""
+    { terminal = "st -f \"Hack:size=16\" tmux"
     , modMask = mod4Mask
     , keys = keyBindings
     , mouseBindings = mouseBindings'
