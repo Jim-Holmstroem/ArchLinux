@@ -25,3 +25,15 @@ Install them according to the pathogen instructions
 * [vim-snippets](https://vimawesome.com/plugin/vim-snippets)
 * [supertab](https://vimawesome.com/plugin/supertab)
 * [sensible.vim](https://vimawesome.com/plugin/sensible-vim)
+
+
+# manually add this gem in `.vimrc`
+```
+autocmd BufWritePre  *.*  call StripTrailingWhite()
+
+function! StripTrailingWhite()
+    let l:winview = winsaveview()
+    silent! %s/\s\+$//
+    call winrestview(l:winview)
+endfunction
+```
