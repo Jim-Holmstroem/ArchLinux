@@ -35,7 +35,11 @@ fi
 
 export _JAVA_AWT_WM_NONREPARENTING=1
 
-setxkbmap -option caps:escape &
+setxkbmap -option caps:escape
+setxkbmap -layout us,se -option 'grp:sclk_toggle' # man xkeyboard-layouts for options
+exec xmonad
+
+
 # toggle_screen &
 
 exec xmonad
