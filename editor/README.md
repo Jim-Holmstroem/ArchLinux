@@ -26,6 +26,8 @@ Install them according to the pathogen instructions
 * [supertab](https://vimawesome.com/plugin/supertab)
 * [sensible.vim](https://vimawesome.com/plugin/sensible-vim)
 
+# Security
+set nomodeline
 
 # manually add this gem in `.vimrc`
 ```
