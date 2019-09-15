@@ -1,0 +1,4 @@
+# Time zone
+```bash
+sudo timedatectl set-timezone Europe/Stockholm
+```
