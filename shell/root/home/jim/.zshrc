@@ -14,6 +14,8 @@ alias rr='ranger'
 export ANDROID_SDK_ROOT=~/Android/Sdk
 
 export PATH=$PATH:$HOME/.cargo/bin
+export PATH=$PATH:$HOME/.local/bin
+export PATH=$PATH:$HOME/.climate/bin
 
 export EDITOR=vim
 
@@ -24,8 +26,11 @@ bindkey "^R" history-incremental-search-backward
 zstyle :compinstall filename '/home/jim/.zshrc'
 
 autoload -Uz compinit promptinit
+fpath+=~/.zfunc
 compinit
 promptinit
+
+zstyle ':completion:*' menu select
 
 prompt walters
 
@@ -39,4 +44,9 @@ if [[ "$SSH_AGENT_PID" == "" ]]; then
     ssh-add
 fi
 
-source aws_zsh_completer.sh
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
+export CUDA_VISIBLE_DEVICES=1
+
+source ${HOME}/Software/zsh-z/zsh-z.plugin.zsh
