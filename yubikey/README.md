@@ -16,3 +16,15 @@ systemctl status pcscd
 ```
 ykman mode
 ```
+
+
+## AWS
+register
+```
+ykman oath accounts add -t  arn:aws:iam::<account-id>:user/<user>
+```
+
+get key
+```
+ykman oath accounts code  arn:aws:iam::<account-id>:user/<user>
+```
