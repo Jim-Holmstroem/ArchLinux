@@ -44,9 +44,21 @@ if [[ "$SSH_AGENT_PID" == "" ]]; then
     ssh-add
 fi
 
+export PYENV_ROOT="/home/jim/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+eval "$(pyenv virtualenv-init -)" # requires pyenv-virtualenv plugin
 
-export CUDA_VISIBLE_DEVICES=1
+source $HOME/.poetry/env
+
+# export CUDA_VISIBLE_DEVICES=1
+
+export AWS_VAULT_BACKEND=pass
 
 source ${HOME}/Software/zsh-z/zsh-z.plugin.zsh
+
+export AWS_DEFAULT_PROFILE=nextml
+
+export _JAVA_AWT_WM_NONREPARENTING=1
+
+export GPG_TTY=$(tty)
