@@ -7,12 +7,23 @@ import qualified Data.Map as Map
 import           XMonad
 import           XMonad.Config.Desktop
 import           XMonad.Util.EZConfig
+import           Xmonad.Util.Paste
 import qualified XMonad.StackSet as W
 
 baseConfig = desktopConfig
 
+-- second value from `xprop | grep WM_CLASS` (appName, className)
+-- https://wiki.haskell.org/Xmonad/Frequently_asked_questions#I_need_to_find_the_class_title_or_some_other_X_property_of_my_program
+programHook = composeAll
+    [ className =? "Gvim" --> doShift "7"
+    , className =? "XClock" --> doFloat -- doShift "2" worked
+    ]
+
+-- TODO for keyinput on focused window (xdotool can do a lot of things) => spawn "xdotool text 'jim.holmstroem@gmail.com'"
+-- TODO ((modMask              , xK_e), pasteString "jim.holmstroem@gmail.com")
 keyBindings conf@(XConfig {XMonad.modMask = modMask}) = Map.fromList $
     [ ((modMask              , xK_w     ), spawn "firefox")
+    , ((modMask              , xK_s     ), spawn "slack") -- FIXME
     , ((modMask              , xK_g     ), spawn $ XMonad.terminal conf)
     , ((modMask              , xK_f     ), spawn "xrandr --output eDP1 --primary --auto --output DP1 --off --output HDMI3 --off")
     , ((modMask .|. shiftMask, xK_f     ), spawn "xrandr --output eDP1 --off --output DP1 --primary --auto --left-of HDMI3 --output HDMI3 --auto")
@@ -38,6 +49,7 @@ keyBindings conf@(XConfig {XMonad.modMask = modMask}) = Map.fromList $
     , ((modMask              , xK_t     ), withFocused $ windows . W.sink)
     , ((modMask              , xK_comma ), sendMessage (IncMasterN 1))
     , ((modMask              , xK_period), sendMessage (IncMasterN (-1)))
+
 
     , ((modMask              , xK_z     ), spawn "slock")
  
@@ -73,6 +85,7 @@ mouseBindings' (XConfig {XMonad.modMask = modMask}) = Map.fromList $
 
 main = xmonad baseConfig
     { terminal = "st -f \"Hack:size=16\" tmux"
+    , manageHook = programHook <+> manageHook baseConfig
     , modMask = mod4Mask
     , keys = keyBindings
     , mouseBindings = mouseBindings'
