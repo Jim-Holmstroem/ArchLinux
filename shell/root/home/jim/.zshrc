@@ -4,6 +4,7 @@ HISTSIZE=100000
 SAVEHIST=100000
 setopt appendhistory autocd extendedglob
 unsetopt beep
+setopt HIST_IGNORE_SPACE
 
 fpath+=~/.zfunc
 
