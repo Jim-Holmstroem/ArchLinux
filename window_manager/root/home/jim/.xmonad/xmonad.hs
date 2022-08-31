@@ -27,7 +27,7 @@ dmenu = "exe=`dmenu_path | dmenu " ++ dmenu_settings ++ " ` && eval \"exec $exe\
 -- (xdotool can do a lot of key inputs) => spawn "xdotool text 'jim.holmstroem@gmail.com'"
 keyBindings conf@(XConfig {XMonad.modMask = modMask}) = Map.fromList $
     [ ((modMask              , xK_w     ), spawn "firefox")
-    , ((modMask              , xK_a     ), spawn "firefox trello.com notion.com")
+    , ((modMask              , xK_a     ), spawn "firefox \"https://trello.com/b/LmEduGgL/gtd?filter=*\" \"https://www.notion.so/j-i-m/Extra-Money-c558aaed8da74cbba6ec53eace18b9d3\"")
     , ((modMask              , xK_s     ), spawn "slack")
     , ((modMask              , xK_g     ), spawn $ XMonad.terminal conf)
     , ((modMask              , xK_f     ), spawn "xrandr --output eDP1 --primary --auto --output DP1 --off --output HDMI3 --off")
