@@ -8,5 +8,6 @@ station wlan0 scan
 
 Often force some type of reset, not sure what it really does, but it works sometimes
 ```bash
+# iw dev wlan0 link
 sudo iw dev wlan0 scan
 ```
