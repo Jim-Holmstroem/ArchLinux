@@ -3,7 +3,9 @@
 ```bash
 udevadm info /sys/class/net/enp0sX | grep -i vendor_id | cut -f2 -d"="
 ```
-(e.g. 18d1 for Google Pixel C)
+(e.g. 18d1 for Google)
+
+This information can also be found with `dmesg`.
 
 Set correct `vendorId` in `90-android-tethering.rules`
 
